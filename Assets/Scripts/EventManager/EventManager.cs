@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class EventManager : define {
+public class EventManager : define
+{
 	public int eventID;
 	public GameObject eventObject;
 	public Transform canvas;
@@ -12,21 +13,23 @@ public class EventManager : define {
 	public GameObject dialogObject;
 
 
-	public Dictionary<string,GameObject> characters = new Dictionary<string,GameObject>();
+	public Dictionary<string,GameObject> characters = new Dictionary<string,GameObject> ();
 
 
-	void Start () {
+	void Start ()
+	{
 		_eventManager = this;
 		Execute ();
 	}
 
-	public void Execute(int pEventID = -1){
+	public void Execute (int pEventID = -1)
+	{
 		if (pEventID != -1) {
 			eventID = pEventID;
 		}
 
-		Debug.Log ("Find event:" + "Prefabs/EventSystem/Events/" + eventID);
-		eventObject = GameObject.Instantiate (Resources.Load<GameObject> ("Prefabs/EventSystem/Events/" + eventID));
+		Debug.Log ("Find ID:" + eventID);
+		eventObject = GameObject.Instantiate (Resources.Load<GameObject> ("Prefabs/EventManager/Events/" + eventID));
 		eventObject.transform.SetParent (data);
 
 		eventObject.GetComponent<Event> ().Execute ();
