@@ -49,15 +49,47 @@
      <Compile Include="Assets\Scripts\EventManager\Event.cs" />
      <Compile Include="Assets\Scripts\EventManager\EventItem.cs" />
      <Compile Include="Assets\Scripts\EventManager\EventItems\EI_ChangeScene.cs" />
-     <Compile Include="Assets\Scripts\EventManager\EventItems\EI_CharacterMove.cs" />
+     <Compile Include="Assets\Scripts\EventManager\EventItems\EI_CharacterController.cs" />
+     <Compile Include="Assets\Scripts\EventManager\EventItems\EI_Dialog.cs" />
+     <Compile Include="Assets\Scripts\EventManager\EventItems\EI_Music.cs" />
      <Compile Include="Assets\Scripts\EventManager\EventManager.cs" />
-     <Compile Include="Assets\Scripts\EventManager\define.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\IOHelper.cs" />
+     <Compile Include="Assets\Scripts\PlayerCache.cs" />
+     <Compile Include="Assets\Scripts\PlayerCore.cs" />
+     <Compile Include="Assets\Scripts\SoundPlayer.cs" />
+     <Compile Include="Assets\Scripts\define.cs" />
+     <Compile Include="Assets\Scripts\enums.cs" />
+     <None Include="Assets\Plugins\DOTween\DOTween43.xml" />
+     <None Include="Assets\Plugins\GoKit\easing\easeEquationsLicense.txt" />
+     <None Include="Assets\Plugins\DOTween\DOTween46.xml" />
+     <None Include="Assets\Plugins\DOTween\readme.txt" />
+     <None Include="Assets\Plugins\DOTween\DOTween50.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity 5.3.5f1/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity 5.3.5f1/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
+ <Reference Include="DOTween">
+ <HintPath>/Users/Hadrian/Documents/Work/Projects/HostClub/Assets/Plugins/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>/Users/Hadrian/Documents/Work/Projects/HostClub/Assets/Plugins/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>/Users/Hadrian/Documents/Work/Projects/HostClub/Assets/Plugins/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>/Users/Hadrian/Documents/Work/Projects/HostClub/Assets/Plugins/DOTween/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>/Users/Hadrian/Documents/Work/Projects/HostClub/Assets/Plugins/Newtonsoft.Json/Newtonsoft.Json.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{FFFFF4BC-8DDF-BDF3-941A-7A25030A2246}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

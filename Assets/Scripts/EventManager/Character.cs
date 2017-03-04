@@ -3,13 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum kEI_CharacterEmotes
-{
-	normal,
-	smile,
-	cry
-}
-
 public class Character : MonoBehaviour
 {
 	public GameObject bodyObject;
@@ -20,6 +13,10 @@ public class Character : MonoBehaviour
 	public Sprite emoteSmile;
 	public Sprite emoteCry;
 
+	public kEI_CharacterPositions poistion;
+
+	public Vector2 size;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -28,7 +25,6 @@ public class Character : MonoBehaviour
 
 	public void ChangeEmote (kEI_CharacterEmotes pEmote)
 	{
-		Debug.Log ("Change Emote:" + pEmote);
 		Sprite emote;
 		switch (pEmote) {
 		case kEI_CharacterEmotes.normal:

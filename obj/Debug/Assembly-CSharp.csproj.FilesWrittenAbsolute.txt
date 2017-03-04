@@ -1,7 +1,18 @@
+/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/Hadrian/Documents/Work/Projects/HostClub/obj/Debug/Assembly-CSharp.dll
+/Users/Hadrian/Documents/Work/Projects/HostClub/obj/Debug/Assembly-CSharp.dll.mdb
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/UnityEngine.dll
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/UnityEditor.dll
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/UnityEngine.UI.dll
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/DOTween.dll
+/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/DOTween43.dll
+/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/DOTween46.dll
+/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/DOTween50.dll
+/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Newtonsoft.Json.dll
+/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Mono.Cecil.dll
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Unity.SerializationLogic.dll
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Unity.DataContract.dll
@@ -11,7 +22,3 @@
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Mono.Cecil.Mdb.dll
-/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Assembly-CSharp.dll.mdb
-/Users/Hadrian/Documents/Work/Projects/HostClub/Temp/bin/Debug/Assembly-CSharp.dll
-/Users/Hadrian/Documents/Work/Projects/HostClub/obj/Debug/Assembly-CSharp.dll
-/Users/Hadrian/Documents/Work/Projects/HostClub/obj/Debug/Assembly-CSharp.dll.mdb

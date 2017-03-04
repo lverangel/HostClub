@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,11 +7,19 @@ public class EventManager : define
 {
 	public int eventID;
 	public GameObject eventObject;
+
 	public Transform canvas;
 	public Transform data;
 
 	public GameObject sceneObject;
-	public GameObject dialogObject;
+	public Text dialogObject;
+	public Image nameImage;
+
+	public float characterLeftX;
+	public float characterMiddleX;
+	public float characterRightX;
+	public float characterY;
+	public float characterDefaultSpeed;
 
 
 	public Dictionary<string,GameObject> characters = new Dictionary<string,GameObject> ();
@@ -18,7 +27,6 @@ public class EventManager : define
 
 	void Start ()
 	{
-		_eventManager = this;
 		Execute ();
 	}
 
@@ -28,7 +36,7 @@ public class EventManager : define
 			eventID = pEventID;
 		}
 
-		Debug.Log ("Find ID:" + eventID);
+		Debug.Log ("Event ID:" + eventID);
 		eventObject = GameObject.Instantiate (Resources.Load<GameObject> ("Prefabs/EventManager/Events/" + eventID));
 		eventObject.transform.SetParent (data);
 
