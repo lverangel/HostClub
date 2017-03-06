@@ -12,7 +12,8 @@ public class EventManager : define
 	public Transform data;
 
 	public GameObject sceneObject;
-	public Text dialogObject;
+	public GameObject CGObject;
+	public DialogBoard dialogBoard;
 	public Image nameImage;
 
 	public float characterLeftX;
@@ -41,5 +42,9 @@ public class EventManager : define
 		eventObject.transform.SetParent (data);
 
 		eventObject.GetComponent<Event> ().Execute ();
+	}
+
+	public void DialogClick(){
+		dialogBoard.OnClick ();
 	}
 }

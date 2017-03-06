@@ -45,9 +45,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AutoFullScreen.cs" />
+     <Compile Include="Assets\DialogBoard.cs" />
      <Compile Include="Assets\Scripts\EventManager\Character.cs" />
      <Compile Include="Assets\Scripts\EventManager\Event.cs" />
      <Compile Include="Assets\Scripts\EventManager\EventItem.cs" />
+     <Compile Include="Assets\Scripts\EventManager\EventItems\EI_CGController.cs" />
      <Compile Include="Assets\Scripts\EventManager\EventItems\EI_ChangeScene.cs" />
      <Compile Include="Assets\Scripts\EventManager\EventItems\EI_CharacterController.cs" />
      <Compile Include="Assets\Scripts\EventManager\EventItems\EI_Dialog.cs" />

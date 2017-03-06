@@ -21,6 +21,13 @@ public enum kEI_CharacterMoveTypes
 	movePosition
 }
 
+public enum kEI_CGTypes
+{
+	flash,
+	zoom,
+	hide
+}
+
 
 public enum kEI_CharacterMoveAnimations
 {

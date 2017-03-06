@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
 	public GameObject bodyObject;
 	public GameObject emoteObject;
 
+	public Sprite nameImage;
 	public Sprite body;
 	public Sprite emoteNormal;
 	public Sprite emoteSmile;

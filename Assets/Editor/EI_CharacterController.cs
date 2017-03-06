@@ -6,7 +6,7 @@ using System.Collections;
 public class Inspector_EI_CharacterController : Editor
 {
 	private SerializedObject obj;
-	private SerializedProperty jumpTo,sound,delayTime,type, ID, speedFactor,startPosition, endPosition, characterObject, characterEmote;
+	private SerializedProperty jumpTo, sound, delayTime, type, ID, speedFactor, startPosition, endPosition, characterObject, characterEmote;
 
 	void OnEnable ()
 	{
