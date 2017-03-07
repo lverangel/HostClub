@@ -47,6 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\AutoFullScreen.cs" />
      <Compile Include="Assets\DialogBoard.cs" />
+     <Compile Include="Assets\EI_Fin.cs" />
+     <Compile Include="Assets\EI_Selection.cs" />
+     <Compile Include="Assets\EI_SelectionItem.cs" />
      <Compile Include="Assets\Scripts\EventManager\Character.cs" />
      <Compile Include="Assets\Scripts\EventManager\Event.cs" />
      <Compile Include="Assets\Scripts\EventManager\EventItem.cs" />

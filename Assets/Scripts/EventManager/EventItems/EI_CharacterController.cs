@@ -16,7 +16,7 @@ public class EI_CharacterController : EventItem
 	public kEI_CharacterPositions endPosition = kEI_CharacterPositions.none;
 	[Tooltip ("拖入角色的Prefab")]
 	public GameObject characterObject;
-	[Tooltip ("更换角色表情")]
+	[Tooltip ("角色表情")]
 	public kEI_CharacterEmotes characterEmote = kEI_CharacterEmotes.none;
 
 	public override void Execute ()
@@ -34,6 +34,10 @@ public class EI_CharacterController : EventItem
 			characterObject = _eventManager.characters [ID];
 		}
 
+		if (characterObject && characterEmote != kEI_CharacterEmotes.none) {
+			characterObject.GetComponent<Character> ().ChangeEmote (characterEmote);
+		}
+
 		if (type == kEI_CharacterMoveTypes.createAndMoveInMoveIn
 		    || type == kEI_CharacterMoveTypes.moveOutAndDestory
 		    || type == kEI_CharacterMoveTypes.movePosition) {
@@ -41,12 +45,6 @@ public class EI_CharacterController : EventItem
 		} else {
 			Next ();
 		}
-
-
-		if (characterObject && characterEmote != kEI_CharacterEmotes.none) {
-			characterObject.GetComponent<Character> ().ChangeEmote (characterEmote);
-		}
-
 	}
 
 	void moveCharacter_ ()

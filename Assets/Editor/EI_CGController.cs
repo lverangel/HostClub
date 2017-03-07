@@ -44,8 +44,11 @@ public class Inspector_EI_CGController : Editor
 			EditorGUILayout.PropertyField (zoomFromScale);
 			EditorGUILayout.PropertyField (zoomToPosition);
 			EditorGUILayout.PropertyField (zoomToScale);
-		}
-		if (type.enumValueIndex == 2) {
+		} else if (type.enumValueIndex == 2) {
+			EditorGUILayout.PropertyField (zoomSpeed);
+			EditorGUILayout.PropertyField (zoomToPosition);
+			EditorGUILayout.PropertyField (zoomToScale);
+		} else if (type.enumValueIndex == 3) {
 		}
 
 		obj.ApplyModifiedProperties ();

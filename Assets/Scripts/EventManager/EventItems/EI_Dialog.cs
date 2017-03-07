@@ -44,7 +44,11 @@ public class EI_Dialog : EventItem
 		if (ID != "") {
 			Character chara = _eventManager.characters [ID].GetComponent<Character> ();
 			if (nameImage) {
+				_eventManager.dialogBoard.SetNameImage (nameImage);
+			} else if (chara.nameImage) {
 				_eventManager.dialogBoard.SetNameImage (chara.nameImage);
+			} else {
+				_eventManager.dialogBoard.SetNameImage (null);
 			}
 			if (characterEmote != kEI_CharacterEmotes.none) {
 				chara.ChangeEmote (characterEmote);

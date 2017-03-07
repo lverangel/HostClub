@@ -27,7 +27,11 @@ public class EventItem : define
 
 	private void next_ ()
 	{
-		_eventManager.eventObject.GetComponent<Event> ().Next ();
+		if (jumpTo) {
+			_eventManager.eventObject.GetComponent<Event> ().JumpTo (jumpTo);
+		} else {
+			_eventManager.eventObject.GetComponent<Event> ().Next ();
+		}
 	}
 
 	public virtual void Execute ()

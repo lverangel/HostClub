@@ -39,7 +39,8 @@ public class Inspector_EI_CharacterController : Editor
 			EditorGUILayout.PropertyField (startPosition);
 			EditorGUILayout.PropertyField (endPosition);
 			EditorGUILayout.PropertyField (characterObject);
-		} else if (type.enumValueIndex == 1) {
+		} 
+		if (type.enumValueIndex == 1) {
 			EditorGUILayout.PropertyField (speedFactor);
 			EditorGUILayout.PropertyField (characterEmote);
 			EditorGUILayout.PropertyField (endPosition);
@@ -48,7 +49,9 @@ public class Inspector_EI_CharacterController : Editor
 			EditorGUILayout.PropertyField (speedFactor);
 			EditorGUILayout.PropertyField (characterEmote);
 			EditorGUILayout.PropertyField (endPosition);
-
+		}
+		if (type.enumValueIndex == 3) {
+			EditorGUILayout.PropertyField (characterEmote);
 		}
 
 		obj.ApplyModifiedProperties ();

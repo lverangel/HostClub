@@ -25,12 +25,12 @@ public class EI_CGController : EventItem
 	public override void Execute ()
 	{
 		GameObject CGObject = _eventManager.CGObject;
-		if (type == kEI_CGTypes.flash || type == kEI_CGTypes.zoom) {
+		if (type == kEI_CGTypes.show || type == kEI_CGTypes.showZoom) {
 			CGObject.GetComponent<Image> ().sprite = CG;
 			CGObject.GetComponent<Image> ().SetNativeSize ();
 			CGObject.SetActive (true);
 
-			if (type == kEI_CGTypes.zoom) {
+			if (type == kEI_CGTypes.showZoom) {
 				CGObject.transform.localScale = new Vector3 (zoomFromScale, zoomFromScale);
 				CGObject.transform.localPosition = new Vector3 (zoomFromPosition.x, zoomFromPosition.y);
 
@@ -42,6 +42,12 @@ public class EI_CGController : EventItem
 			} else {
 				Next ();
 			}
+		} else if (type == kEI_CGTypes.move) {
+			CGObject.transform.DOScale (zoomToScale, zoomSpeed)
+				.SetDelay (zoomShowTime)
+				.OnComplete (Next);
+			CGObject.transform.DOLocalMove (new Vector3 (zoomToPosition.x, zoomToPosition.y), zoomSpeed)
+				.SetDelay (zoomShowTime);
 		} else {
 			_eventManager.CGObject.SetActive (false);
 			Next ();

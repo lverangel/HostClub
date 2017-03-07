@@ -18,13 +18,15 @@ public enum kEI_CharacterMoveTypes
 {
 	createAndMoveInMoveIn,
 	moveOutAndDestory,
-	movePosition
+	movePosition,
+	emote
 }
 
 public enum kEI_CGTypes
 {
-	flash,
-	zoom,
+	show,
+	showZoom,
+	move,
 	hide
 }
 

@@ -14,6 +14,8 @@ public class EventManager : define
 	public GameObject sceneObject;
 	public GameObject CGObject;
 	public DialogBoard dialogBoard;
+	public GameObject selectionBoard;
+	public GameObject selectionItemObject;
 	public Image nameImage;
 
 	public float characterLeftX;
@@ -28,11 +30,12 @@ public class EventManager : define
 
 	void Start ()
 	{
-		Execute ();
+		
 	}
 
 	public void Execute (int pEventID = -1)
 	{
+		gameObject.SetActive (true);
 		if (pEventID != -1) {
 			eventID = pEventID;
 		}
@@ -44,7 +47,19 @@ public class EventManager : define
 		eventObject.GetComponent<Event> ().Execute ();
 	}
 
-	public void DialogClick(){
+	public void Fin(){
+		Debug.Log ("Event Fin");
+		for (int i = 0; i < data.childCount; i++) {
+			DestroyImmediate (data.GetChild(i).gameObject);
+		}
+		foreach (KeyValuePair<string,GameObject> chara in characters) {
+			DestroyImmediate (chara.Value);
+		}
+		characters.Clear ();
+		gameObject.SetActive (false);
+	}
+
+	public void NextButton(){
 		dialogBoard.OnClick ();
 	}
 }
