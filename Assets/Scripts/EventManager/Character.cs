@@ -42,9 +42,12 @@ public class Character : MonoBehaviour
 			break;
 		}
 			
-		emoteObject.GetComponent<Image> ().sprite = emote;
+		emoteObject.GetComponent<Image> ().sprite = emote;	
+	}
 
-			
+	public void SetColor(Color pColor){
+		bodyObject.GetComponent<Image> ().color = pColor;
+		emoteObject.GetComponent<Image> ().color = pColor;
 	}
 
 }

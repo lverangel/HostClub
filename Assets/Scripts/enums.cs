@@ -30,6 +30,13 @@ public enum kEI_CGTypes
 	hide
 }
 
+public enum kEI_DialogMasks
+{
+	talkerLight,
+	allLight,
+	allBlack
+}
+
 
 public enum kEI_CharacterMoveAnimations
 {

@@ -18,6 +18,8 @@ public class EI_Dialog : EventItem
 	public float speed = 0.1f;
 	[Tooltip ("是否启用开口动画")]
 	public bool isSpeakAnimation = true;
+	[Tooltip ("人物黑遮罩")]
+	public kEI_DialogMasks dialogMask = kEI_DialogMasks.talkerLight;
 	[Tooltip ("文字数组")]
 	public string[] text;
 
@@ -41,8 +43,9 @@ public class EI_Dialog : EventItem
 			nextRow_ ();
 		});
 
+		Character chara = null;
 		if (ID != "") {
-			Character chara = _eventManager.characters [ID].GetComponent<Character> ();
+			chara = _eventManager.characters [ID].GetComponent<Character> ();
 			if (nameImage) {
 				_eventManager.dialogBoard.SetNameImage (nameImage);
 			} else if (chara.nameImage) {
@@ -59,6 +62,35 @@ public class EI_Dialog : EventItem
 			_eventManager.dialogBoard.SetNameImage (nameImage);
 		}
 
+		if (dialogMask == kEI_DialogMasks.talkerLight) {
+			if (!chara) {
+				dialogMask = kEI_DialogMasks.allLight;
+			} else {
+				foreach (KeyValuePair<string,GameObject> pair in _eventManager.characters) {
+					if (pair.Key == ID) {
+						//变白
+						pair.Value.GetComponent<Character>().SetColor(Color.white);
+					} else {
+						//变黑
+						pair.Value.GetComponent<Character>().SetColor(Color.gray);
+					}
+				}
+			}
+		}
+
+		if (dialogMask == kEI_DialogMasks.allLight) {
+			foreach (KeyValuePair<string,GameObject> pair in _eventManager.characters) {
+				//变白
+				pair.Value.GetComponent<Character>().SetColor(Color.white);
+			}
+		}
+
+		if (dialogMask == kEI_DialogMasks.allBlack) {
+			foreach (KeyValuePair<string,GameObject> pair in _eventManager.characters) {
+				//变黑
+				pair.Value.GetComponent<Character>().SetColor(Color.gray);
+			}
+		}
 	}
 
 	bool nextRow_ ()
@@ -103,6 +135,10 @@ public class EI_Dialog : EventItem
 			if (!nextRow_ ()) {
 				_eventManager.dialogBoard.EI_Dialog = null;
 				_eventManager.dialogBoard.gameObject.SetActive (false);
+				foreach (KeyValuePair<string,GameObject> pair in _eventManager.characters) {
+					//变白
+					pair.Value.GetComponent<Character>().SetColor(Color.white);
+				}
 				Next ();
 			}
 		} else {

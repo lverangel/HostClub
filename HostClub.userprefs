@@ -1,19 +1,23 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EventManager/EventItems/EI_CharacterController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/EI_Selection.cs">
     <Files>
-      <File FileName="Assets/Scripts/define.cs" Line="114" Column="28" />
-      <File FileName="Assets/Scripts/EventManager/Character.cs" Line="20" Column="32" />
-      <File FileName="Assets/Scripts/EventManager/Event.cs" Line="7" Column="40" />
-      <File FileName="Assets/Scripts/EventManager/EventManager.cs" Line="20" Column="37" />
+      <File FileName="Assets/EI_Selection.cs" Line="19" Column="30" />
+      <File FileName="Assets/Scripts/define.cs" Line="77" Column="17" />
+      <File FileName="Assets/Scripts/EventManager/Character.cs" Line="50" Column="53" />
+      <File FileName="Assets/Scripts/EventManager/Event.cs" Line="40" Column="18" />
+      <File FileName="Assets/Scripts/EventManager/EventManager.cs" Line="62" Column="27" />
       <File FileName="Assets/Scripts/EventManager/EventItems/EI_ChangeScene.cs" Line="4" Column="1" />
-      <File FileName="Assets/Scripts/EventManager/EventItems/EI_CharacterController.cs" Line="106" Column="108" />
-      <File FileName="Assets/Scripts/EventManager/EventItems/EI_Music.cs" Line="12" Column="3" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="57" Column="64" />
-      <File FileName="Assets/Scripts/PlayerCache.cs" Line="26" Column="3" />
-      <File FileName="Assets/Scripts/PlayerCore.cs" Line="35" Column="15" />
-      <File FileName="Assets/Scripts/enums.cs" Line="19" Column="24" />
-      <File FileName="Assets/Editor/EI_CharacterController.cs" Line="9" Column="49" />
+      <File FileName="Assets/Scripts/EventManager/EventItems/EI_CharacterController.cs" Line="106" Column="6" />
+      <File FileName="Assets/Scripts/EventManager/EventItems/EI_Music.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerCache.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerCore.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/enums.cs" Line="37" Column="10" />
+      <File FileName="Assets/Editor/EI_CharacterController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EventManager/EventItem.cs" Line="31" Column="57" />
+      <File FileName="Assets/EI_Fin.cs" Line="7" Column="12" />
+      <File FileName="Assets/Scripts/EventManager/EventItems/EI_Dialog.cs" Line="17" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
