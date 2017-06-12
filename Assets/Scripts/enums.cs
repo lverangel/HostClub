@@ -1,5 +1,6 @@
 public enum kNotificationKeys{
-	RefreshUI
+	RefreshUI,
+	NextFrame
 }
 
 public enum kEI_SceneAnimations{
@@ -57,4 +58,33 @@ public enum kEI_MusicTypes
 {
 	play,
 	stop
+}
+
+public enum kCI_Types{
+	none,
+	chair,
+	table,
+	enter
+}
+
+public enum kDirection{
+	none,
+	LT,
+	RT,
+	RB,
+	LB
+}
+
+public enum kCC_Types{
+	none,
+	waiter,
+	guest
+}
+
+public enum kCC_Actions{
+	none,
+	stand,
+	move,
+	sit_normal,
+	sit_speak
 }

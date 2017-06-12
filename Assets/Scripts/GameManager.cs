@@ -15,6 +15,7 @@ public class GameManager : define
 	public static GameManager instance = null;
 	public PlayerCore playerCore = null;
 	public EventManager eventManager = null;
+	public ClubManager clubManager = null;
 
 	public string Localize = "en";
 
@@ -29,6 +30,9 @@ public class GameManager : define
 
 	public AudioMixer SoundMixer;
 	public AudioMixer MusicMixer;
+
+	public float dt = 0;
+	public float frameSpeed = 0.3f;
 
 	void Awake ()
 	{
@@ -122,6 +126,13 @@ public class GameManager : define
 				mouseResponser.GetComponent<ParticleSystem> ().Stop ();
 			}
 		}
+
+		dt += Time.deltaTime;
+
+		if (dt > frameSpeed) {
+			dt = 0;
+			PostNotification(kNotificationKeys.NextFrame,null);
+		}
 	}
 
 	private IEnumerator onMouseResponse_(){
@@ -156,4 +167,5 @@ public class GameManager : define
 		AudioSource audioSource = _gameManager.GetComponent<AudioSource> ();
 		audioSource.Stop ();
 	}
+		
 }
