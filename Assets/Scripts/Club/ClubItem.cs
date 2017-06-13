@@ -8,7 +8,10 @@ public class ClubItem : define
 	public Vector2 grid;
 	public Vector2 activeGrid;
 
+
+
 	public kCC_Types activeTarget;
+	public GameObject activeObject;
 
 	// Use this for initialization
 	void Start ()

@@ -12,6 +12,7 @@ public class ClubManager : define
 		public Vector2 gridPoint;
 		public Vector3 localPosition;
 		public GameObject obj;
+		public List<GameObject> activeObjs = new List<GameObject> ();
 	}
 
 	public int level = 1;
@@ -27,7 +28,8 @@ public class ClubManager : define
 
 	public Dictionary<Vector2,ClubNode> chessBoard = new Dictionary<Vector2,ClubNode> ();
 
-	List<Vector2> _passableList = new List<Vector2>();
+	List<Vector2> _passableList = new List<Vector2> ();
+	AStar _astar;
 
 	// Use this for initialization
 	void Start ()
@@ -53,13 +55,15 @@ public class ClubManager : define
 		_RefreshUI ();
 	}
 
+	List<Vector2> _path;
+
 	void _RefreshUI (Hashtable pData = null)
 	{
-		AStar astar = new AStar (_passableList, (int)size.x, (int)size.y);
-		List<Vector2> path = astar.getPathing (new Vector2(5,4), new Vector2(4,8));
-		foreach (var v in path) {
-			Debug.Log ("{" + v.x + "," + v.y + "}");
-		}
+		_astar = new AStar (_passableList, (int)size.x, (int)size.y);
+	}
+
+	public List<Vector2> generatePath(Vector2 start, Vector2 end){
+		return _astar.getPathing (start, end);
 	}
 
 	void buildMap ()
@@ -128,11 +132,28 @@ public class ClubManager : define
 			}
 			tmp.Sort ();
 			obj.transform.localPosition = pair [tmp [0]].localPosition;
-			obj.GetComponent<ClubItem> ().grid = pair [tmp [0]].gridPoint;
+			ClubItem ci = obj.GetComponent<ClubItem> ();
+			ci.grid = pair [tmp [0]].gridPoint;
 			ClubNode curNode = chessBoard [pair [tmp [0]].gridPoint];
-			curNode.target = obj.GetComponent<ClubItem> ().activeTarget;
-			curNode.type = obj.GetComponent<ClubItem> ().type;
+			curNode.target = ci.activeTarget;
+			curNode.type = ci.type;
 			curNode.obj = obj;
+			Vector2 g = ci.grid;
+			Vector2 ag = Vector2.zero;
+			if (ci.direction == kDirection.LB) {
+				ag = new Vector2 (g.x - 1, g.y);
+			}
+			if (ci.direction == kDirection.RB) {
+				ag = new Vector2 (g.x, g.y + 1);
+			}
+			if (ci.direction == kDirection.LT) {
+				ag = new Vector2 (g.x, g.y - 1);
+			}
+			if (ci.direction == kDirection.RT) {
+				ag = new Vector2 (g.x + 1, g.y);
+			}
+			ci.activeGrid = ag;
+			chessBoard [ag].activeObjs.Add (obj);
 		}
 
 		_passableList.Clear ();
