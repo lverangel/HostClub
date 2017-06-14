@@ -16,8 +16,8 @@ public class EE_GridMarker : define
 		Vector2 gd = GetComponent<ClubManager> ().gridDistance;
 		Vector2 s = GetComponent<ClubManager> ().size;
 		GameObject gmo;
-		if (transform.FindChild ("GridMarker")) {
-			gmo = transform.FindChild ("GridMarker").gameObject;
+		if (transform.Find ("GridMarker")) {
+			gmo = transform.Find ("GridMarker").gameObject;
 			GameObject.DestroyImmediate (gmo);
 		}
 		gmo = new GameObject ();

@@ -22,13 +22,14 @@ public class ClubManager : define
 
 	public Vector3 OriginPoint {
 		get {
-			return transform.FindChild ("Zero").localPosition;
+			return transform.Find ("Zero").localPosition;
 		}
 	}
 
 	public Dictionary<Vector2,ClubNode> chessBoard = new Dictionary<Vector2,ClubNode> ();
-
 	List<Vector2> _passableList = new List<Vector2> ();
+
+
 	AStar _astar;
 
 	// Use this for initialization
@@ -119,8 +120,8 @@ public class ClubManager : define
 			}
 		}
 
-		for (int i = 0; i < transform.FindChild ("Items").childCount; i++) {
-			GameObject obj = transform.FindChild ("Items").GetChild (i).gameObject;
+		for (int i = 0; i < transform.Find ("Items").childCount; i++) {
+			GameObject obj = transform.Find ("Items").GetChild (i).gameObject;
 			List<float> tmp = new List<float> ();
 			Dictionary<float,ClubNode> pair = new Dictionary<float,ClubNode> ();
 			foreach (KeyValuePair<Vector2,ClubNode> v in chessBoard) {
@@ -133,27 +134,30 @@ public class ClubManager : define
 			tmp.Sort ();
 			obj.transform.localPosition = pair [tmp [0]].localPosition;
 			ClubItem ci = obj.GetComponent<ClubItem> ();
-			ci.grid = pair [tmp [0]].gridPoint;
-			ClubNode curNode = chessBoard [pair [tmp [0]].gridPoint];
-			curNode.target = ci.activeTarget;
-			curNode.type = ci.type;
-			curNode.obj = obj;
-			Vector2 g = ci.grid;
-			Vector2 ag = Vector2.zero;
-			if (ci.direction == kDirection.LB) {
-				ag = new Vector2 (g.x - 1, g.y);
+			if (ci.type == kCI_Types.chair) {
+				CI_Chair chair = obj.GetComponent<CI_Chair> ();
+				chair.grid = pair [tmp [0]].gridPoint;
+				ClubNode curNode = chessBoard [pair [tmp [0]].gridPoint];
+				curNode.target = chair.activeTarget;
+				curNode.type = chair.type;
+				curNode.obj = obj;
+				Vector2 g = ci.grid;
+				Vector2 ag = Vector2.zero;
+				if (ci.direction == kDirection.LB) {
+					ag = new Vector2 (g.x - 1, g.y);
+				}
+				if (ci.direction == kDirection.RB) {
+					ag = new Vector2 (g.x, g.y + 1);
+				}
+				if (ci.direction == kDirection.LT) {
+					ag = new Vector2 (g.x, g.y - 1);
+				}
+				if (ci.direction == kDirection.RT) {
+					ag = new Vector2 (g.x + 1, g.y);
+				}
+				chair.activeGrid = ag;
+				chessBoard [ag].activeObjs.Add (obj);
 			}
-			if (ci.direction == kDirection.RB) {
-				ag = new Vector2 (g.x, g.y + 1);
-			}
-			if (ci.direction == kDirection.LT) {
-				ag = new Vector2 (g.x, g.y - 1);
-			}
-			if (ci.direction == kDirection.RT) {
-				ag = new Vector2 (g.x + 1, g.y);
-			}
-			ci.activeGrid = ag;
-			chessBoard [ag].activeObjs.Add (obj);
 		}
 
 		_passableList.Clear ();

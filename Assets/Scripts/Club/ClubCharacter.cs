@@ -32,22 +32,14 @@ public class ClubCharacter : define
 	public void CC_INIT ()
 	{
 		RegistNotification (this, kNotificationKeys.NextFrame, NextFrame);
-
-		SetAction (kCC_Actions.stand, kDirection.LB);
 	}
 
 	public void SetAction (kCC_Actions pAction, kDirection pDirection = kDirection.LB)
 	{
 		_action = pAction;
 		_actionCache.Clear ();
-		if (pDirection != kDirection.none) {
-			_direction = pDirection;
-			if (_direction == kDirection.RB || _direction == kDirection.RT) {
-				GetComponent<SpriteRenderer> ().flipX = true;
-			} else {
-				GetComponent<SpriteRenderer> ().flipX = false;
-			}
-		}
+		_direction = pDirection;
+
 		string ds;
 		if (_direction == kDirection.LB || _direction == kDirection.RB) {
 			ds = "front";
@@ -82,10 +74,19 @@ public class ClubCharacter : define
 			_frameIndex = 0;
 		}
 		GetComponent<SpriteRenderer> ().sprite = _actionCache [_frameIndex];
+		if (_direction != kDirection.none) {
+
+			if (_direction == kDirection.RB || _direction == kDirection.RT) {
+				GetComponent<SpriteRenderer> ().flipX = true;
+			} else {
+				GetComponent<SpriteRenderer> ().flipX = false;
+			}
+		}
+
 		_frameIndex++;
 	}
 
-	void Move_ (List<Vector2> pToList, Action<Hashtable> pCallBack = null, Hashtable pCallBackData = null)
+	protected void Move_ (List<Vector2> pToList, Action<Hashtable> pCallBack = null, Hashtable pCallBackData = null)
 	{
 		if (pToList.Count == 0) {
 			SetAction (kCC_Actions.stand);
@@ -111,11 +112,7 @@ public class ClubCharacter : define
 		SetAction (kCC_Actions.move, d);
 
 		Vector3 tolp = _clubManager.chessBoard [to].localPosition;
-		if (d == kDirection.LB || d == kDirection.LT) {
-			this.GetComponent<SpriteRenderer> ().sortingOrder = ((int)grid.y - (int)grid.x) * 10 + 1;
-		} else {
-			this.GetComponent<SpriteRenderer> ().sortingOrder = ((int)grid.y - (int)grid.x) * 10 - 1;
-		}
+		this.GetComponent<SpriteRenderer> ().sortingOrder = ((int)to.y - (int)to.x) * 10 + 5;
 		pToList.Remove (to);
 		gameObject.transform.DOLocalMove (tolp, _gameManager.frameSpeed * 6)
 			.SetEase (Ease.Linear)
@@ -125,38 +122,13 @@ public class ClubCharacter : define
 		});
 	}
 
-	void FindSit ()
-	{
-		ClubManager.ClubNode sitNode = null;
-		foreach (KeyValuePair<Vector2,ClubManager.ClubNode> v in _clubManager.chessBoard) {
-			ClubManager.ClubNode node = v.Value;
-			if (node.type == kCI_Types.chair && node.target == kCC_Types.guest) {
-				if (node.obj.GetComponent<ClubItem> ().activeObject == null) {
-					sitNode = node;
-					break;
-				}
-			}
-		}
-
-		if (sitNode != null) {
-			Vector2 movep = sitNode.obj.GetComponent<ClubItem> ().activeGrid;
-			Vector2 sitp = sitNode.obj.GetComponent<ClubItem> ().grid;
-			_clubManager.generatePath (grid, movep);
-			Hashtable data = new Hashtable ();
-			data.Add ("position", sitp);
-			List<Vector2> path = _clubManager.generatePath (grid, movep);
-			Move_ (path, Sit_, data);
-		}
-	}
-
-	void Sit_ (Hashtable pData)
+	protected void Sit_ (Hashtable pData)
 	{
 		Vector2 sitp = (Vector2)pData ["position"];
 		grid = sitp;
 		ClubManager.ClubNode node = _clubManager.chessBoard [sitp];
 		transform.localPosition = node.localPosition;
-		node.obj.GetComponent<ClubItem> ().activeObject = gameObject;
-		SetAction (kCC_Actions.sit_normal);
+		SetAction (kCC_Actions.sit_normal, node.obj.GetComponent<CI_Chair> ().direction);
 	}
 
 	// Update is called once per frame

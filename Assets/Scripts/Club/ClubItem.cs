@@ -6,12 +6,7 @@ public class ClubItem : define
 	public kCI_Types type;
 	public kDirection direction;
 	public Vector2 grid;
-	public Vector2 activeGrid;
 
-
-
-	public kCC_Types activeTarget;
-	public GameObject activeObject;
 
 	// Use this for initialization
 	void Start ()
