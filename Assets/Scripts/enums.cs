@@ -88,3 +88,9 @@ public enum kCC_Actions{
 	sit_normal,
 	sit_speak
 }
+
+public enum kCC_WaitersAttributes{
+	face,
+	body,
+	charm
+}

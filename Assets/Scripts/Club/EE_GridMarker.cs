@@ -38,8 +38,8 @@ public class EE_GridMarker : define
 				t.font = font;
 				t.alignment = TextAnchor.MiddleCenter;
 				lo.transform.SetParent (gmo.transform);
-				float xx = GetComponent<ClubManager> ().OriginPoint.x;
-				float yy = GetComponent<ClubManager> ().OriginPoint.y;
+				float xx = GetComponent<ClubManager> ().originPoint.x;
+				float yy = GetComponent<ClubManager> ().originPoint.y;
 				if (x > y) {
 					xx += (x + y) * gd.x;
 					yy += (x - y) * gd.y;

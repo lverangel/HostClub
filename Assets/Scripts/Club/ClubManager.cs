@@ -19,12 +19,15 @@ public class ClubManager : define
 	public int style = 1;
 	public Vector2 gridDistance = new Vector2 (68, 36);
 	public Vector2 size = new Vector2 (6, 12);
+	public Vector2 enterPoint;
 
-	public Vector3 OriginPoint {
+	public Vector3 originPoint {
 		get {
 			return transform.Find ("Zero").localPosition;
 		}
 	}
+
+
 
 	public Dictionary<Vector2,ClubNode> chessBoard = new Dictionary<Vector2,ClubNode> ();
 	List<Vector2> _passableList = new List<Vector2> ();
@@ -38,6 +41,8 @@ public class ClubManager : define
 		buildMap ();
 
 		RefreshUI ();
+
+		generateGuest (1);
 	}
 
 	// Update is called once per frame
@@ -63,7 +68,8 @@ public class ClubManager : define
 		_astar = new AStar (_passableList, (int)size.x, (int)size.y);
 	}
 
-	public List<Vector2> generatePath(Vector2 start, Vector2 end){
+	public List<Vector2> generatePath (Vector2 start, Vector2 end)
+	{
 		return _astar.getPathing (start, end);
 	}
 
@@ -97,8 +103,8 @@ public class ClubManager : define
 //				lo.transform.localPosition = new Vector3 (xx, yy, 0);
 //				lo.transform.localScale = Vector3.one;
 
-				float xx = GetComponent<ClubManager> ().OriginPoint.x;
-				float yy = GetComponent<ClubManager> ().OriginPoint.y;
+				float xx = GetComponent<ClubManager> ().originPoint.x;
+				float yy = GetComponent<ClubManager> ().originPoint.y;
 				if (x > y) {
 					xx += (x + y) * gridDistance.x;
 					yy += (x - y) * gridDistance.y;
@@ -173,6 +179,21 @@ public class ClubManager : define
 		return Mathf.Sqrt ((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
 	}
 
+	public void generateGuest (int pID)
+	{
+		GameObject guestObject = GameObject.Instantiate (Resources.Load<GameObject> ("Prefabs/Club/Guest"));
+		CC_Guest guest = guestObject.GetComponent<CC_Guest> ();
+		guest.ID = pID;
+		guest.grid = enterPoint;
+		guestObject.transform.SetParent (transform.Find ("Character"));
+		guestObject.transform.localPosition = getGridPosition (enterPoint);
+		guestObject.transform.localScale = Vector3.one;
+	}
+
+	public Vector3 getGridPosition (Vector2 grid)
+	{
+		return chessBoard [grid].localPosition;
+	}
 
 }
 
