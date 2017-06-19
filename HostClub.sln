@@ -1,11 +1,11 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{8D3C0432-43BB-A9B6-6FDC-B1E5F84A6020}") = "HostClub", "Assembly-CSharp-firstpass.csproj", "{FFFFF4BC-8DDF-BDF3-941A-7A25030A2246}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostClub", "Assembly-CSharp-firstpass.csproj", "{FFFFF4BC-8DDF-BDF3-941A-7A25030A2246}"
 EndProject
-Project("{8D3C0432-43BB-A9B6-6FDC-B1E5F84A6020}") = "HostClub", "Assembly-CSharp.csproj", "{D15602A5-B4DB-96A4-8ED1-CD8C33EEFE2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostClub", "Assembly-CSharp.csproj", "{D15602A5-B4DB-96A4-8ED1-CD8C33EEFE2C}"
 EndProject
-Project("{8D3C0432-43BB-A9B6-6FDC-B1E5F84A6020}") = "HostClub", "Assembly-CSharp-Editor.csproj", "{8C279E71-7008-16F4-93C4-E8B50C3ACD0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostClub", "Assembly-CSharp-Editor.csproj", "{8C279E71-7008-16F4-93C4-E8B50C3ACD0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
