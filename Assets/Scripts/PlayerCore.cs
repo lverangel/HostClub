@@ -8,39 +8,6 @@ using System.Collections.Generic;
 [RequireComponent (typeof(PlayerCache))]
 //[ExecuteInEditMode]
 
-public class Waiter
-{
-	public int ID = 0;
-	public int level = 0;
-	public Dictionary<kCC_WaitersAttributes,int> attributes = new Dictionary<kCC_WaitersAttributes, int> ();
-
-	static public Waiter createDefault (int pID)
-	{
-		Waiter ret = new Waiter ();
-		ret.ID = pID;
-		ret.level = 0;
-
-		Hashtable waiters = define.getTxtFile ("Data/Waiters").hashtableFromJson ();
-		Hashtable waiter = (Hashtable)waiters [pID.ToString ()];
-		Debug.Log (waiter.Count);
-		Hashtable attributes = (Hashtable)waiter ["attributes"];
-
-		Dictionary<kCC_WaitersAttributes,int> ati = new Dictionary<kCC_WaitersAttributes, int> ();
-		foreach(DictionaryEntry entry in attributes){
-			ati.Add (define.ParseEnum<kCC_WaitersAttributes> (entry.Key.ToString ()), Convert.ToInt32 (entry.Value.ToString ()));
-		}
-
-		ret.attributes = ati;
-
-//		foreach (KeyValuePair<kCC_WaitersAttributes,int> kv in ret.attributes) {
-//			Debug.Log(kv.Key +":"+kv.Value);
-//		}
-
-		return ret;
-	}
-}
-
-
 public class PlayerCore:MonoBehaviour
 {
 
@@ -53,12 +20,12 @@ public class PlayerCore:MonoBehaviour
 		public int Coin = 500;
 		public int Gem = 100;
 
-		public List<Waiter> Waiters;
+		public Dictionary<int,Waiter> Waiters  = new Dictionary<int,Waiter> ();
 
 		public LocalStatistics _allStatistics = new LocalStatistics ();
 	}
 
-	public  SaveDataMain _mainData = new SaveDataMain ();
+	public  SaveDataMain mainData = new SaveDataMain ();
 
 	void Awake ()
 	{
@@ -89,9 +56,8 @@ public class PlayerCore:MonoBehaviour
 	public void initProfile ()
 	{
 
-
-		_mainData.Waiters = new List<Waiter> ();
-		_mainData.Waiters.Add (Waiter.createDefault(1));
+		mainData.Waiters.Clear ();
+		mainData.Waiters.Add (1, Waiter.createDefault (1));
 //		_mainData.charaUnlocked["1"] = 1;
 //		_mainData.charaUnlocked["2"] = 1;
 //
@@ -105,7 +71,7 @@ public class PlayerCore:MonoBehaviour
 	{
 		
 		if (IOHelper.IsFileExists (dirPath + "/MainData.sav")) {
-			_mainData = (SaveDataMain)IOHelper.GetData (dirPath + "/MainData.sav", typeof(SaveDataMain));
+			mainData = (SaveDataMain)IOHelper.GetData (dirPath + "/MainData.sav", typeof(SaveDataMain));
 		} 
 		if (IOHelper.IsFileExists (dirPath + "/PlayerData.sav")) {
 			playerCache._playerData = (SaveDataPlayer)IOHelper.GetData (dirPath + "/PlayerData.sav", typeof(SaveDataPlayer));
@@ -124,7 +90,7 @@ public class PlayerCore:MonoBehaviour
 		string filename = dirPath + "/MainData.sav";
 		string fileplayer = dirPath + "/PlayerData.sav";
 
-		IOHelper.SetData (filename, _mainData);//主属性
+		IOHelper.SetData (filename, mainData);//主属性
 		IOHelper.SetData (fileplayer, playerCache._playerData);//棋盘和当前底层数据
 
 	}

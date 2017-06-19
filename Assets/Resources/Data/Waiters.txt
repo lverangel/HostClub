@@ -1,9 +1,16 @@
 {
     "1": {
+    	"name":"Hadrian",
+    	"memo":"这朵花在调戏我，因为它在我面前枯萎。",
         "attributes": {
             "face": 10,
             "body": 15,
             "charm": 20
+        },
+        "attributes_growing":{
+        	"face": 1.6,
+        	"body":1.4,
+        	"charm":1.7
         }
     }
 }

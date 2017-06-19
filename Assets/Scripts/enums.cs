@@ -89,6 +89,13 @@ public enum kCC_Actions{
 	sit_speak
 }
 
+public enum kCC_GuestStatus{
+	none,
+	wait,
+	order,
+	check
+}
+
 public enum kCC_WaitersAttributes{
 	face,
 	body,

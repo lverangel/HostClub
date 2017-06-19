@@ -27,13 +27,18 @@ public class ClubManager : define
 		}
 	}
 
-
-
+	//棋盘
 	public Dictionary<Vector2,ClubNode> chessBoard = new Dictionary<Vector2,ClubNode> ();
+
+	//棋盘无障碍节点
 	List<Vector2> _passableList = new List<Vector2> ();
 
-
+	//A星
 	AStar _astar;
+
+	public Dictionary<int, GameObject> waiterObjects = new  Dictionary<int, GameObject>();
+	//选择的牛郎
+	public GameObject selectedWaiter;
 
 	// Use this for initialization
 	void Start ()
@@ -43,6 +48,10 @@ public class ClubManager : define
 		RefreshUI ();
 
 		generateGuest (1);
+
+		createAllWaiterObjects ();
+
+		selectedWaiter = waiterObjects [1];
 	}
 
 	// Update is called once per frame
@@ -72,6 +81,7 @@ public class ClubManager : define
 	{
 		return _astar.getPathing (start, end);
 	}
+		
 
 	void buildMap ()
 	{
@@ -174,6 +184,18 @@ public class ClubManager : define
 		}
 	}
 
+	void createAllWaiterObjects(){
+		waiterObjects.Clear ();
+		foreach (KeyValuePair<int,Waiter> kv in _playerCore.mainData.Waiters) {
+			GameObject obj = GameObject.Instantiate (Resources.Load<GameObject> ("Prefabs/Club/Waiter"));
+			obj.name = kv.Key.ToString ();
+			obj.GetComponent<CC_Waiter> ().ID = kv.Key;
+			waiterObjects.Add (kv.Key, obj);
+			obj.transform.SetParent (transform.Find ("Waiters"));
+			obj.transform.localScale = Vector3.one;
+		}
+	}
+
 	private float TwoPointDistance2D (Vector2 p1, Vector2 p2)
 	{
 		return Mathf.Sqrt ((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
@@ -181,13 +203,13 @@ public class ClubManager : define
 
 	public void generateGuest (int pID)
 	{
-		GameObject guestObject = GameObject.Instantiate (Resources.Load<GameObject> ("Prefabs/Club/Guest"));
-		CC_Guest guest = guestObject.GetComponent<CC_Guest> ();
+		GameObject obj = GameObject.Instantiate (Resources.Load<GameObject> ("Prefabs/Club/Guest"));
+		CC_Guest guest = obj.GetComponent<CC_Guest> ();
 		guest.ID = pID;
 		guest.grid = enterPoint;
-		guestObject.transform.SetParent (transform.Find ("Character"));
-		guestObject.transform.localPosition = getGridPosition (enterPoint);
-		guestObject.transform.localScale = Vector3.one;
+		obj.transform.SetParent (transform.Find ("Guests"));
+		obj.transform.localPosition = getGridPosition (enterPoint);
+		obj.transform.localScale = Vector3.one;
 	}
 
 	public Vector3 getGridPosition (Vector2 grid)
