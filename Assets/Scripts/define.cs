@@ -80,6 +80,12 @@ public class define : MonoBehaviour
 		}
 	}
 
+	protected ClubManager _clubManager {
+		get {
+			return GameManager.instance.clubManager;
+		}
+	}
+
 	//	protected GameScene _gameScene {
 	//		get {
 	//			return GameManager.instance.gameScene;
